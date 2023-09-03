@@ -37,6 +37,21 @@ function showList(array) {
 }
 
 document.addEventListener("DOMContentLoaded", (e) => {
-  // Escribe tu solución aquí
-  // Sugerencia de cómo mostrar el array => showList(strangeArray);
+  const container = document.getElementById("list");
+
+  // Filtrar solo los elementos de tipo String
+  const stringArray = strangeArray.filter((element) => typeof element === "string");
+
+  // Ordenar el array de strings alfabéticamente
+  stringArray.sort((a, b) => a.localeCompare(b));
+
+  // Limpiar el contenido actual del contenedor
+  container.innerHTML = "";
+
+  // Mostrar los elementos en la lista
+  stringArray.forEach((element) => {
+    const li = document.createElement("li");
+    li.appendChild(document.createTextNode(element));
+    container.appendChild(li);
+  });
 });
